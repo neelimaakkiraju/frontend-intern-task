@@ -29,31 +29,55 @@ export default function Checkout() {
     alert(`Order placed! Thank you, ${form.name}. Total ₹${total}`);
   };
 
-  if (!items.length) return <div>Your cart is empty</div>;
+  if (!items.length)
+    return <div className="text-center py-16 text-lg text-gray-500 animate-fade-in">Your cart is empty</div>;
 
   return (
-    <div>
-      <h3>Checkout</h3>
-      <div>
-        <h4>Order Summary</h4>
-        {items.map(it => <div key={it.id}>{it.title} x {it.qty} — ₹{(it.price*it.qty).toFixed(2)}</div>)}
-        <div><b>Total: ₹{total}</b></div>
+    <div className="max-w-2xl mx-auto animate-fade-in-up">
+      <h3 className="text-2xl font-bold mb-6 text-gray-800">Checkout</h3>
+      <div className="bg-white rounded-lg shadow p-6 mb-8">
+        <h4 className="text-lg font-semibold mb-3 text-gray-700">Order Summary</h4>
+        <div className="divide-y divide-gray-100 mb-3">
+          {items.map(it => (
+            <div key={it.id} className="flex justify-between py-2 text-gray-600">
+              <span>{it.title} <span className="text-xs text-gray-400">x {it.qty}</span></span>
+              <span>₹{(it.price * it.qty).toFixed(2)}</span>
+            </div>
+          ))}
+        </div>
+        <div className="text-right text-lg font-bold text-gray-800">Total: ₹{total}</div>
       </div>
 
-      <div style={{marginTop:12}}>
-        <h4>Shipping</h4>
-        {error && <div style={{color:'red'}}>{error}</div>}
-        <div>
-          <input placeholder="Name" value={form.name} onChange={e=>setForm(prev=>({...prev,name:e.target.value}))} />
+      <div className="bg-white rounded-lg shadow p-6">
+        <h4 className="text-lg font-semibold mb-3 text-gray-700">Shipping</h4>
+        {error && <div className="mb-3 text-red-600 font-medium animate-fade-in">{error}</div>}
+        <div className="space-y-4">
+          <input
+            placeholder="Name"
+            value={form.name}
+            onChange={e => setForm(prev => ({ ...prev, name: e.target.value }))}
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:ring-2 focus:ring-pink-400 focus:border-pink-400 transition-all"
+          />
+          <input
+            placeholder="Email"
+            value={form.email}
+            onChange={e => setForm(prev => ({ ...prev, email: e.target.value }))}
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:ring-2 focus:ring-pink-400 focus:border-pink-400 transition-all"
+          />
+          <textarea
+            placeholder="Address"
+            value={form.address}
+            onChange={e => setForm(prev => ({ ...prev, address: e.target.value }))}
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:ring-2 focus:ring-pink-400 focus:border-pink-400 transition-all min-h-[80px]"
+          />
         </div>
-        <div>
-          <input placeholder="Email" value={form.email} onChange={e=>setForm(prev=>({...prev,email:e.target.value}))} />
-        </div>
-        <div>
-          <textarea placeholder="Address" value={form.address} onChange={e=>setForm(prev=>({...prev,address:e.target.value}))} />
-        </div>
-        <div style={{marginTop:8}}>
-          <button onClick={handlePlace}>Place Order</button>
+        <div className="mt-6 text-right">
+          <button
+            onClick={handlePlace}
+            className="px-6 py-2 rounded-lg bg-pink-600 text-white font-semibold shadow hover:bg-pink-700 transition-colors text-lg"
+          >
+            Place Order
+          </button>
         </div>
       </div>
     </div>

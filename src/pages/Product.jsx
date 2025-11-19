@@ -19,30 +19,35 @@ export default function Product() {
 
   if (loading || !p) return <Loading />;
   return (
-    <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:20}}>
-      <div>
-        <img src={p.image} alt={p.title} style={{width:'100%', maxHeight:500, objectFit:'contain'}} />
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto bg-white rounded-lg shadow p-6 animate-fade-in-up">
+      <div className="flex items-center justify-center">
+        <img src={p.image} alt={p.title} className="w-full max-h-[400px] object-contain rounded bg-gray-50 p-4" />
       </div>
-      <div>
-        <h2>{p.title}</h2>
-        <p>{p.description}</p>
-        <p><b>₹{p.price}</b> — Rating: {p.rating?.rate ?? 'N/A'}</p>
+      <div className="flex flex-col justify-center">
+        <h2 className="text-2xl font-bold mb-2 text-gray-800">{p.title}</h2>
+        <p className="mb-4 text-gray-600">{p.description}</p>
+        <p className="mb-4 text-lg font-semibold text-pink-700">{p.price} <span className="text-sm text-gray-500 font-normal">— Rating: {p.rating?.rate ?? 'N/A'}</span></p>
 
-        <div style={{marginTop:12}}>
-          <label>Qty: </label>
-          <select value={qty} onChange={e=>setQty(Number(e.target.value))}>
-            {[1,2,3,4,5].map(n => <option key={n} value={n}>{n}</option>)}
+        <div className="mb-4 flex items-center gap-2">
+          <label className="font-medium text-gray-700">Qty:</label>
+          <select
+            value={qty}
+            onChange={e => setQty(Number(e.target.value))}
+            className="px-3 py-1 rounded border border-gray-300 focus:ring-2 focus:ring-pink-400 focus:border-pink-400 transition-all"
+          >
+            {[1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n}</option>)}
           </select>
         </div>
 
-        <div style={{marginTop:12}}>
-          <button onClick={() => {
+        <button
+          onClick={() => {
             dispatch(addToCart({ product: p, qty }));
             navigate('/cart');
-          }}>
-            Add to cart
-          </button>
-        </div>
+          }}
+          className="px-6 py-2 rounded-lg bg-pink-600 text-white font-semibold shadow hover:bg-pink-700 transition-colors text-lg w-full md:w-auto"
+        >
+          Add to cart
+        </button>
       </div>
     </div>
   );
