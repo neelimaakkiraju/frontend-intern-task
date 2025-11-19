@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadProducts, loadCategories } from '../store/productsSlice';
+import { loadProducts, loadCategories } from '../store/productSlice';
 import ProductCard from '../components/ProductCard';
 import Loading from '../components/Loading';
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadProduct, clearSelected } from '../store/productsSlice';
+import { loadProduct, clearSelected } from '../store/productSlice';
 import { addToCart } from '../store/cartSlice';
 import Loading from '../components/Loading';
 
