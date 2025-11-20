@@ -26,7 +26,7 @@ export default function Product() {
       <div className="flex flex-col justify-center">
         <h2 className="text-2xl font-bold mb-2 text-gray-800">{p.title}</h2>
         <p className="mb-4 text-gray-600">{p.description}</p>
-        <p className="mb-4 text-lg font-semibold text-pink-700">{p.price} <span className="text-sm text-gray-500 font-normal">— Rating: {p.rating?.rate ?? 'N/A'}</span></p>
+        <p className="mb-4 text-lg font-semibold text-pink-700"> ₹{p.price} <span className="text-sm text-gray-500 font-normal">— Rating: {p.rating?.rate ?? 'N/A'}</span></p>
 
         <div className="mb-4 flex items-center gap-2">
           <label className="font-medium text-gray-700">Qty:</label>

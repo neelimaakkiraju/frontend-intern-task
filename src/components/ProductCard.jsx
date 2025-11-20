@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export default function ProductCard({ p }) {
   return (
     <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow flex flex-col h-full animate-fade-in-up">
+      
       <Link to={`/product/${p.id}`} className="block mb-2 group">
         <img src={p.image} alt={p.title} className="w-full h-44 object-contain rounded bg-gray-50 mb-2 transition-transform group-hover:scale-105" />
         <h4 className="text-sm font-medium min-h-[40px] text-gray-800 group-hover:text-pink-700 transition-colors">{p.title}</h4>
@@ -16,6 +17,7 @@ export default function ProductCard({ p }) {
         >
           View
         </Link>
+        
       </div>
     </div>
   );
