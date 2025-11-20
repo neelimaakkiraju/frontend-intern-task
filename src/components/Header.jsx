@@ -32,7 +32,7 @@ export default function Header() {
   return (
     <header className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-white shadow-sm sticky top-0 z-20 transition-all duration-300">
       <Link to="/" className="flex items-center gap-2 group">
-        <h2 className="text-2xl font-bold text-pink-600 tracking-tight group-hover:scale-105 group-hover:text-pink-700 transition-transform duration-300">My E-Com</h2>
+        <h2 className="text-2xl font-bold text-pink-600 tracking-tight group-hover:scale-105 group-hover:text-pink-700 transition-transform duration-300">SimpleStore</h2>
       </Link>
       <nav className="flex items-center gap-6">
         {/* Categories */}
